@@ -1,0 +1,24 @@
+
+<h1>Jobs Posts</h1>
+
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <a href="/articles/<%= job.id %>">
+        <%= job.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Job Posts</h1>
+
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <%= link_to job.title, job %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Article",  "http://localhost:3000/jobs/new" %>
