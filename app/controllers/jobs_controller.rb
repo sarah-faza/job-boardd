@@ -1,17 +1,29 @@
 class JobsController < ApplicationController
+
+  api :GET, '/jobs'
+  desc 'index jobs'
   def index
     @jobs = Job.all
     render json: @jobs
   end
+
+  api :GET, '/jobs'
+  desc 'show jobs'
   def show
    @job = Job.find(params[:id])
    render json: @job
   end
 
+
+  api :POST, '/jops'
+  desc 'new job'
   def new
    job = Job.new
   render json: @job
-   end
+  end
+
+  api :POST, '/jops'
+  desc 'create jobs'
 
   def create
    @job = Job.new(title: "" , desc:"", status:"Unseen")
@@ -22,6 +34,9 @@ class JobsController < ApplicationController
    end
   end
 
+
+  api :PUT, '/job'
+  desc 'update job'
 
   def update
     @article = Job.find(params[:id])
@@ -39,6 +54,9 @@ class JobsController < ApplicationController
   def job_params
     params.permit(:title, :desc)
   end
+
+  api :DELETE, '/jop'
+  desc 'destroy  jobs'
 
   def destroy
     @job = Job.find[:id]

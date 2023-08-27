@@ -6,16 +6,21 @@ class JappsController < ApplicationController
     render json: @japps
   end
 
+  api :POST, '/japps'
+  desc 'Test API'
   def apply
 
       @japp = Japp.new(title: "" , desc:"", status:"Unseen")
       if @japp.save
-        render json: @japp, status: :created
+        render json: @japp, status: :created , location:@japp
       else
         render json: @japp.errors, status: :unprocessable_entity
       end
+
+
   end
   end
+
 
 
 
